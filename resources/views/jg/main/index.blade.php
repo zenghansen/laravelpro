@@ -3,7 +3,7 @@
 <body class="easyui-layout">
 <div data-options="region:'north',split:true" style="height:50px;">
     @section('header')
-        This is the master sidebar.
+        客户管理系统
     @show
 </div>
 <div data-options="region:'west',split:true,title:'菜单'" style="width:80px;">

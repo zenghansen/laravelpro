@@ -35,10 +35,18 @@ class CustomerController extends Controller
     {
         $pageSize = $request->rows;
 
-        $user = CustomerModel::where("isDel", '=', '0')->paginate($pageSize)->toArray();
+        $user = Auth::user();
+        if ($user->roleId == 1) {
+            $user = CustomerModel::where("isDel", '=', '0')->paginate($pageSize)->toArray();
+        } else {
+            $adminId = $user->id;
+            $user = CustomerModel::where("isDel", 0)->where('adminId', $adminId)->paginate($pageSize)->toArray();
+        }
+
+
         $adminIds = array_column($user['data'], 'adminId');
-        $admin = User::whereIn('id', $adminIds)->select(['name','id'])->get()->toArray();
-        $list = Tool::setKf($admin,'id','name',$user['data'],'adminId','adminName');
+        $admin = User::whereIn('id', $adminIds)->select(['name', 'id'])->get()->toArray();
+        $list = Tool::setKf($admin, 'id', 'name', $user['data'], 'adminId', 'adminName');
         return response()->json($list);
     }
 

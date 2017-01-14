@@ -21,11 +21,11 @@ class Role
      */
     protected $roleMods = array(
         '1' => array(
-            ['id' => 1, 'name' => 'admin/jg/user'],
-            ['id' => 2, 'name' => 'admin/jg/customer'],
+            ['id' => 1, 'name' => 'admin/jg/user', 'text' => '员工管理'],
+            ['id' => 2, 'name' => 'admin/jg/customer', 'text' => '客户管理'],
         ),
         '2' => array(
-            ['id' => 2, 'name' => 'admin/jg/customer'],
+            ['id' => 2, 'name' => 'admin/jg/customer', 'text' => 'item2'],
         ),
     );
 
@@ -38,6 +38,11 @@ class Role
     public function __construct(Guard $auth)
     {
         $this->auth = $auth;
+
+        view()->share('roleId', $auth->user()->roleId); //share the urlId to select nav
+
+        view()->share('nav', json_encode($this->roleMods[$auth->user()->roleId], true)); //share the urlId to select nav
+
     }
 
     /**
@@ -50,7 +55,7 @@ class Role
     public function handle($request, Closure $next)
     {
         if ($this->auth->check()) {
-            $user = Auth::user();
+            $user = $this->auth->user();
 
             $roleMods = $this->roleMods[$user->roleId];
 

@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
                 }
                 $sql = str_replace("?", "'%s'", $sql);
                 array_unshift($bindings, $sql);
-                Log::info(call_user_func_array('sprintf', $bindings));
+                //Log::info(call_user_func_array('sprintf', $bindings));
                 // dump($sql);
             });
         }

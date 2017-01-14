@@ -1,6 +1,6 @@
 @extends('jg.main.index')
 
-@section('title', 'Page Title')
+@section('title', '员工管理')
 
 @section('contenter')
     <table id="grid"></table>

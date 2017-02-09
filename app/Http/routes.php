@@ -18,9 +18,9 @@ Route::get('/', function () {
 Route::get('user/login', 'Jg\CustomerController@showLogin');
 
 
-Route::group(['prefix' => 'admin/jg'], function () {
+Route::group(['prefix' => 'admin/jg', 'middleware' => ['addheader']], function () {
 
-    Route::group(['middleware' => ['auth','role']], function () {
+    Route::group(['middleware' => ['auth', 'role']], function () {
 
 
         Route::group(['prefix' => 'customer'], function () {

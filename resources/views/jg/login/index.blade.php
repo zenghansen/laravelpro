@@ -3,6 +3,7 @@
 @section('title', '登录系统')
 <body class="easyui-layout">
 <div data-options="region:'north',split:true" style="height:50px;">
+    客户管理系统
 </div>
 <div data-options="region:'center'">
     <div class="easyui-panel" style="max-width:400px;padding:30px 60px;" data-options="border:false">

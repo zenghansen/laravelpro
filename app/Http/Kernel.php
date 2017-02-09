@@ -32,6 +32,7 @@ class Kernel extends HttpKernel
 
         /*jg start*/
         'role' => \App\Http\Middleware\Jg\Role::class,
+        'addheader' => \App\Http\Middleware\Jg\AddHeader::class,
         /*jg end*/
     ];
 }

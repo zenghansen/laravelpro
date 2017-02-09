@@ -21,7 +21,9 @@ function initList() {
             [
                 {title: '编号', field: 'id', width: 50, align: 'center'},
                 {title: '账号', field: 'name', width: 100, align: 'center'},
-                {title: '角色', field: 'roleId', width: 100, align: 'center'},
+                {title: '角色', field: 'roleId', width: 100, align: 'center',formatter: function (value, row, index) {
+                    return value == 1?'管理员':value == 2?'普通员工':'未知';
+                }},
                 {title: '真名', field: 'realName', width: 100, align: 'center'},
                 {
                     title: '操作', field: 'opt', width: 100, align: 'center', formatter: function (value, row, index) {
@@ -42,7 +44,7 @@ function initList() {
     var p = $('#grid').datagrid('getPager');
     $(p).pagination({
         layout: ['first', 'prev', 'next', 'last'],
-        displayMsg: '{from}-{to} 共{total}',
+        displayMsg: '{from}-{to} 共{total}'
     });
 }
 function add() {

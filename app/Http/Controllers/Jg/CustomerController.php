@@ -54,6 +54,10 @@ class CustomerController extends Controller
     {
 
         if ($request->oper == 'add') {
+            $isSet = CustomerModel::where('name', $request->name)->exists();
+            if($isSet){
+                return response()->json(['code' => -1, 'msg' => '该客户名称已存在']);
+            }
             $user = Auth::user();
             $customer = new CustomerModel;
             $customer->name = $request->name;
@@ -71,7 +75,7 @@ class CustomerController extends Controller
             $customer = CustomerModel::find($request->id);
             $customer->isDel = 1;
         } else {
-            return response()->json(['code' => -1, 'msg' => '未知oper']);;
+            return response()->json(['code' => -1, 'msg' => '未知oper']);
         }
 
         $customer->save();

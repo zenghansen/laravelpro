@@ -14,15 +14,17 @@ function checkSelected() {
     return true;
 }
 $(function ($) {
-    $('#leftMenu').tree({
-        data: nav,
-        onClick: function (node) {
-            location.href = '/' + node.name + '/index';
-        }
-    });
+    if(typeof(nav) != "undefined") {
+        $('#leftMenu').tree({
+            data: nav,
+            onClick: function (node) {
+                location.href = '/' + node.name + '/index';
+            }
+        });
 
-    if (urlId != 0) {
-        var node = $('#leftMenu').tree('find', urlId);
-        $('#leftMenu').tree('select', node.target);
+        if (urlId != 0) {
+            var node = $('#leftMenu').tree('find', urlId);
+            $('#leftMenu').tree('select', node.target);
+        }
     }
 })

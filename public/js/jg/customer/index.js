@@ -46,7 +46,7 @@ function initList() {
     var p = $('#grid').datagrid('getPager');
     $(p).pagination({
         layout: ['first', 'prev', 'next', 'last'],
-        displayMsg: '{from}-{to} 共{total}',
+        displayMsg: '{from}-{to} 共{total}'
     });
 }
 function add() {

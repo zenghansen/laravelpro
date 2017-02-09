@@ -15,6 +15,7 @@ class LoginController extends Controller
         view()->share('loginUrl', '/admin/jg/login/login');
         view()->share('getUrl', '/admin/jg/login/list');
         view()->share('editUrl', '/admin/jg/login/edit');
+        view()->share('nav',json_encode([]));
     }
 
     public function tpl()
